@@ -22,7 +22,7 @@
 					'--l':l+'%',
 				}"
 				:data-pick="i == pick"
-				@click="check(i == pick)"></a-dot>
+				@click="check"></a-dot>
 			</main>
 		</section>
 		<section id="canvas_footer">
@@ -54,7 +54,8 @@
 			methods: {
 				check: function(e) {
 					console.log(e)
-					//console.log(e.target);
+					console.log(e.target);
+					console.log(e.target.dataset.pick);
 					
 				}
 			}
