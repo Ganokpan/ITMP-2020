@@ -10,7 +10,7 @@
 	<div id="canvas">
 		<section id="canvas_header">
 			<div>
-				-- แสดงคะแนน
+				คุณแยกผลไม้ไปแล้ว {{score}} ชิ้น
 			</div>
 		</section>
 		<section id="canvas_main" 
@@ -21,7 +21,10 @@
 				:data-pst="i"></div>
 				<div class="box _toggle" data-pst="10" data-isrightarrow="1"></div>
 
-				<div class="box _fruit"></div>
+				<div class="box _fruit" v-for="f in fruits" 
+				:data-pst="f.pst" 
+				:data-type="f.type"
+				></div>
 
 				<div class="box _origin"></div>
 				<div class="box _12" data-pst="12"></div>
@@ -39,29 +42,48 @@
 		</section>
 	</div>
 
-	<script>
+	<script> //ฟังก์ชั่นแรนดอม
 		function rand(start,stop){
 			let shift = (stop-start)+1
 			return Math.floor(Math.random()*100%shift)+start
 		}
 		
-		let fruitCount = 5
+		let nextfruitid = 5 //idผลไม้ที่จะออกต่อมา
 		let isRightArrow = 1
-		let speed = 1000
+		let speed = 1000 //สามารถลบทิ้งได้
 		let app = new Vue({
 			el:'#canvas',
 			data:{
+				isRightArrow:isRightArrow,
+				speed : speed,
 				play:true,
-				time:0,
+				turn:0, //จับเวลาเล่นเกม
 				score:0,
-				fruits:[
-					{id:1,type:13,pst:6,run:true,step:1},
-					{id:2,type:11,pst:3,run:true,step:1},
-					{id:3,type:11,pst:2,run:true,step:1},
-					{id:4,type:13,pst:1,run:true,step:1},
+				fruits:[ //ค่าเริ่มต้นของผลไม้ typeคือชนิด pstคือจุดแรกที่โผล่ออกมา runคือผลไม้ยังสามารถขยับอยู่อีกได้ไหม
+					{id:1,type:'yellow',pst:6,run:true,step:1},
+					{id:2,type:'red',pst:3,run:true,step:1},
+					{id:3,type:'yellow',pst:2,run:true,step:1},
+					{id:4,type:'red',pst:8,run:true,step:1}
 				]
+			},
+			methods:{},
+			computed:{}, //ประมวลผลทุกๆครั้งที่ทุกค่าเปลี่ยน
+			watch:{ //ดูเฉพาะบางค่าที่เปลี่ยน
+				turn: function(x) {
+					let count = this.fruits.length
+					for(let f in this.fruits){
+						let run = this.fruits[f].run
+						if(run){
+							this.fruits[f].pst = this.fruits[f].pst+1
+						}
+						console.log()
+					}
+				}
 			}
 		})
+		let playing = setInterval(function(){
+			app.turn++
+		},speed)
 	</script>
 </body>
 </html>
