@@ -25,7 +25,7 @@ body{
 }
 #canvas_main{
 	background-color: grey;
-	background-image: url('tile-rock.jpg');
+	background-image: url('https://us.123rf.com/450wm/angelp/angelp0901/angelp090100149/4198436-bella-notte-cielo-stellato-sfondo-vector-illustration-.jpg?ver=6');
 	background-size: 20%;
 	height: 400px;
 	opacity: .2;
@@ -68,23 +68,31 @@ div.box{
 }
 .box._toggle{
 	background-color: yellow;
+	background-image: url('https://png.pngtree.com/png-clipart/20190603/original/pngtree-imperial-crown-png-image_677356.jpg');
+	background-size: cover;
 	transition: none;
 	opacity: .5;
 }
 .box._toggle[data-isrightarrow="0"]{
 	background-color: red;
+	background-image: url('https://png.pngtree.com/png-clipart/20190906/original/pngtree-red-sapphire-crown-illustration-png-image_4568656.jpg');
+	background-size: cover;
 }
 
 
 .box._12{
 	background-color: red;
+	background-image: url('https://png.pngtree.com/png-clipart/20190906/original/pngtree-red-sapphire-crown-illustration-png-image_4568656.jpg');
+	background-size: cover;
 }
 .box._16{
 	background-color: yellow;
+	background-image: url('https://png.pngtree.com/png-clipart/20190603/original/pngtree-imperial-crown-png-image_677356.jpg');
+	background-size: cover;
 }
 .box._path{
 	background-color: black;
-	background-image: url('tile-wood.jpg');
+	background-image: url('https://i0.hippopx.com/photos/746/23/596/the-background-gold-golden-yellow-thumb.jpg');
 	background-size: cover;
 	transform: rotate(0deg);
 }
@@ -97,12 +105,16 @@ div.box{
 }
 .box._fruit{
 	background-color: yellow;
+	background-image: url('https://png.pngtree.com/png-clipart/20190603/original/pngtree-imperial-crown-png-image_677356.jpg');
+	background-size: cover;
 	border-radius: 100%;
 	border: 3px solid #fffc;
 	transform: scale(.6);
 }
 .box._fruit[data-type="red"]{
 	background-color: red;
+	background-image: url('https://png.pngtree.com/png-clipart/20190906/original/pngtree-red-sapphire-crown-illustration-png-image_4568656.jpg');
+	background-size: cover;
 }
 
 .box[data-pst="0"]{
