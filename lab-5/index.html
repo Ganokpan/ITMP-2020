@@ -12,7 +12,7 @@
 	<div id="canvas">
 		<section id="canvas_header">
 			<div>
-				คุณแยกผลไม้ไปแล้ว {{score}} ชิ้น
+				คะแนนของคุณ คือ {{score}} !!!!
 			</div>
 		</section>
 		<section id="canvas_main" :data-play="play">
@@ -33,7 +33,7 @@
 				Toggle
 			</div>
 			<div v-if="!play" class="btn" id="endgame">
-				Ene Game
+				End Game
 			</div>
 		</section>
 	</div>
@@ -87,26 +87,39 @@
 					}
 					let count = this.fruits.length
 					for (let f in this.fruits) {
-						
+
 						//let run = this.fruits[f].run
-						if (this.fruits[f].run) {
+						if (this.fruits[f].run) { //สีแดงไปต่อ
 							this.fruits[f].pst = this.fruits[f].pst + 1
-						if (this.isRightArrow == 1 && this.fruits[f].pst == 11) {
+						}
+						if (this.isRightArrow == 1 && this.fruits[f].pst == 11) { //ไปสีเหลืองจ้า
 							this.fruits[f].pst = 13
-							this.fruits[f].step = 3;
+							this.fruits[f].pst = this.fruits[f].pst + 3
 						}
-							if (this.fruits[f].pst == 12 || this.fruits[f].pst == 16) {
-								if ((this.fruits[f].pst == 12 && this.fruits[f].type == 'red') || (this.fruits[f].pst == 16 && this.fruits[f].type == 'yellow')) {
-									this.score++
-									this.fruits[f].run = false
-								}
-
-								/*this.fruits[f].run = false
-								this.play = false*/
+						if (this.fruits[f].pst == 12 || this.fruits[f].pst == 16) {
+							if (this.fruits[f].pst == 12 && this.fruits[f].type == 'red' && this.fruits[f].run == true) {
+								this.score++
+								this.fruits[f].run = false
+							} else if (this.fruits[f].pst == 16 && this.fruits[f].type == 'yellow' && this.fruits[f].run == true) {
+								this.score++
+								this.fruits[f].run = false
+							} else if (this.fruits[f].pst == 12 && this.fruits[f].type == "yellow") {
+								clearInterval(playing)
+								this.play = false
+							} else if (this.fruits[f].pst == 16 && this.fruits[f].type == "red") {
+								clearInterval(playing)
+								this.play = false
 							}
+							/*this.fruits[f].run = false
+							this.play = false*/
+							//console.log()
 						}
-
-						//console.log()
+					} if (app.score > 15) {
+						app.speed = 800
+					} if (app.score > 23) {
+						app.speed = 500
+					} if (app.score > 28) {
+						app.speed = 200
 					}
 				}
 			}
