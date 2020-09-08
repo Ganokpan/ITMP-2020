@@ -75,6 +75,9 @@
 						let run = this.fruits[f].run
 						if(run){
 							this.fruits[f].pst = this.fruits[f].pst+1
+							if (this.fruits[f].pst == 12 || this.fruits[f].pst == 16) {
+								this.fruits[f].run = false
+							}
 						}
 						console.log()
 					}
