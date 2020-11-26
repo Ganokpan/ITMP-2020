@@ -5,6 +5,8 @@ body{
 	min-height: 100vh;
 	display: flex;
 	background:black;
+	font-family: 'Itim', cursive;
+	font-size: 2em;
 }
 #canvas{
 	margin: auto;

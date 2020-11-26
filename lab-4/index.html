@@ -6,6 +6,8 @@
 	<link rel="stylesheet" type="text/css" href="../src/reset.css">
 	<link rel="stylesheet" type="text/css" href="lab.css">
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Chonburi&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -60,10 +62,10 @@
 						} if (e == false) {
 							this.incorrect()
 						}
-					}if (this.score < 0) {
-						this.score = 0  
-					}if (this.time < 0) {
-						this.time = 0  
+					} if (this.score < 0) {
+						this.score = 0
+					} if (this.time < 0) {
+						this.time = 0
 					}
 					/*else if(this.time < 0){
 						alert("Time Up!!!");
@@ -81,7 +83,7 @@
 				},
 				incorrect: function () { //ตอบผิดเวลาลดคะแนนลด
 					this.score--
-					this.time-= 4
+					this.time -= 4
 
 				}
 			}

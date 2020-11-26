@@ -6,19 +6,28 @@
 	<link rel=stylesheet href="../src/reset.css">
 	<link rel=stylesheet href="lab.css">
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@1,700&display=swap" rel="stylesheet">
 
 </head>
 
 <body class="paper">
 	<div id="app">
 		<input type="number" v-model="n">
+		<h3>x</h3>
 		<input type="number" v-model="row">
 		<div class="space"></div>
-		<h3>สูตรคูณแม่ {{n}}</h3>
-		<h5>แม่ก่อนหน้า -> แม่ {{before_n}}</h5>
-		<h4 v-for="i in r">{{n}} x {{i}} = {{x(i)}}
-		</h4>
-		<h3>ผลรวมทั้งหมดคือ {{sum}}</h3>
+		<h5><br>แม่ก่อนหน้า -> แม่ {{before_n}}<br><br></h5>
+		<div class="box">
+			<h3>สูตรคูณแม่ {{n}}<br></h3>
+		</div>
+		<div class="box2"><br>
+			<h4 v-for="i in r">{{n}} x {{i}} = {{x(i)}}
+			</h4><br>
+		</div>
+		<div class="box">
+			<h3>ผลรวมทั้งหมดคือ {{sum}}</h3>
+		</div>
 	</div>
 
 	<script>
@@ -39,7 +48,7 @@
 			computed: {
 				r: function () {
 					return parseInt(this.row)
-				}, 
+				},
 				sum: function () {
 					let sum = 0
 					for (var i = 0; i <= this.r; i++) {

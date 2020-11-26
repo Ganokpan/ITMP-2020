@@ -2,6 +2,8 @@ body{
 	min-height: 100vh;
 	display: flex;
 	background: black;
+	font-size: 2em;
+	font-family: 'Chonburi', cursive;
 }
 #canvas{
 	margin: auto;
