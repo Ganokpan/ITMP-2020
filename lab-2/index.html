@@ -2,71 +2,110 @@
 <html>
 
 <head>
-	<title>The Members - ITKMITL Multimedia Programming 2563</title>
+    <title>The Members - ITKMITL Multimedia Programming 2563</title>
 
-	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-	<link rel="stylesheet" type="text/css" href="lab.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="lab.css">
 </head>
 
 <body>
-	<div id="app">
-        <h2>About</h2>
-        <h3>Username {{person.username}}</h3>
-        <h3>Name {{person.name}}</h3>
-        <h3>email {{person.email}}</h3>
-        <h3>Website {{person.website}}</h3>
-        <h3>company {{person.company.name}}</h3>
-
-        <h2>Users</h2>
-        <h4 v-for="u in users" :data-id="u.id" @click="viewBio(u)">{{u.username}}</h4>
+    <div id="app">
+        <div>
+            <div class="box1">
+                <h2>รายละเอียดเพื่อติดต่อช่างภาพ</h2>
+                <img
+                    src="https://stickershop.line-scdn.net/stickershop/v1/sticker/14335/android/sticker.png;compress=true">
+                <h3>Username {{person.username}}</h3>
+                <h3>Name {{person.name}}</h3>
+                <h3>email {{person.email}}</h3>
+                <h3>Website {{person.website}}</h3>
+                <h3>company {{person.company.name}}</h3>
+                <br><br>
+                <button class="button button1" @click="isthisgood">เขาเป็นช่างภาพที่ดีหรือไม่</button>
+                <h2>{{yesno.answer}}</h2>
+                <img :src="yesno.image">
+            </div>
+            <div class="box2">
+                <h2>ภาพเหล่านี้ถูกถ่ายโดย</h2>
+                <h4 v-for="u in users" :data-id="u.id" @click="viewBio(u)">
+                    <div class="box3">{{u.username}}</div>
+                    <div class="box4"><img :src="`https://picsum.photos/id/10${u.id}/200/200`" alt="">
+                    </div>
+                </h4>
+            </div>
+        </div>
     </div>
 
 
     <script>
+
         fetch('https://jsonplaceholder.typicode.com/users')
             .then(response => response.json())
             .then(json => {
                 console.log(json)
-                app.users = JSON
+                app.users = json
                 app.person = json[0]
             })
+
 
         let app = new Vue({
             el: '#app',
             methods: {
-                viewBio: function(users) {
-                    this.person = users
+                viewBio: function (user) {
+                    this.person = user
+                    this.yesno.answer = "อยากรู้ คลิกเลย"
+                    this.yesno.image = ""
+                },
+                isthisgood: function () {
+                    fetch('https://yesno.wtf/api')
+                        .then(response => response.json())
+                        .then(json => {
+                            console.log(json)
+                            app.yesno = json
+                        })
                 }
             },
             data: {
-                person: {
-                    "id": 0,
-                    "name": "___________",
-                    "username": "___________",
-                    "email": "___________",
-                    "website": "___________",
-                    "company": {
-                        "name": "___________",
-                    }
+                yesno: {
+                    "answer": "บอกกันลับๆนะ อยากรู้ คลิกเลย",
+                    "forced": false,
+                    "image": ""
                 },
                 users: [{
-                    "id": 0,
-                    "name": "___________",
-                    "username": "___________",
-                    "email": "___________",
-                    "website": "___________",
+                    "id": 1,
+                    "name": "______",
+                    "username": "______",
+                    "email": "______",
+                    "website": "______",
                     "company": {
-                        "name": "___________",
+                        "name": "______",
+                        "catchPhrase": "Multi-layered client-server neural-net",
+                        "bs": "harness real-time e-markets"
                     }
-                }, ],
+                }],
+                person: {
+                    "id": 1,
+                    "name": "______",
+                    "username": "______",
+                    "email": "______",
+                    "website": "______",
+                    "company": {
+                        "name": "______",
+                        "catchPhrase": "Multi-layered client-server neural-net",
+                        "bs": "harness real-time e-markets"
+                    }
+                }
             }
         })
-
-        // function viewBio(h4) {
-        //     let id = h4.dataset.id
-        //     app.person = app.users[id - 1]
-        //     console.log(id)
-        // }
+	// 	function viewBio(h2){
+	// 		let id = h2.dataset.id;
+	// 		app.person = app.users[id-1]
+	// 		console.log(id)
+	// }
     </script>
 </body>
 
